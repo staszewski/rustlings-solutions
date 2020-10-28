@@ -10,16 +10,20 @@
 // No boiler plate code this time,
 // you can do this!
 
-trait AppendBar {
+// I AM NOT DONE
+
+trait AppendBar<T> {
     fn append_bar(self) -> Self;
 }
 
 //TODO: Add your code here
 
-impl AppendBar for Vec<String> {
-    fn append_bar(mut self) -> Self {
-        self.push(String::from("Bar"));
-        return self;
+impl<T> AppendBar<T> for Vec<T>
+where
+    T: AppendBar<String>,
+{
+    fn append_bar(self) -> Self {
+        self.push(String::from("Bar"))
     }
 }
 
